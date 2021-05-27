@@ -21,15 +21,13 @@ binaryTree *createNode(int data) {
 }
 
 void push(binaryTree **tree, int data) {
-	binaryTree *newNode = createNode(data);
-
 	binaryTree *tmp = *tree;
 	if (tmp == NULL) {
 		*tree = newNode;
 	}
 	else if (data < tmp->data) {
 		if (tmp->left == NULL) {
-			tmp->left = newNode;
+			tmp->left = createNode(data);
 		}
 		else {
 			push(&(tmp->left), data);
@@ -37,7 +35,7 @@ void push(binaryTree **tree, int data) {
 	}
 	else if (data > tmp->data) {
 		if (tmp->right == NULL) {
-			tmp->right = newNode;
+			tmp->right = createNode(data);
 		}
 		else {
 			push(&(tmp->right), data);
